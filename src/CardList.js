@@ -1,7 +1,14 @@
 import React from 'react';
 import Card from './Card';
+import { useCardContext } from './CardProvider';
 
-export default function CardList({ cards, setSelectedCard, player, setFrom, selectedCard }) {
+export default function CardList({ cards, cardLocation }) {
+  const {
+    selectedCard, 
+    setSelectedCard, 
+    setFrom
+  } = useCardContext();
+
   return (
     <div className='card-list'>
       {
@@ -9,7 +16,7 @@ export default function CardList({ cards, setSelectedCard, player, setFrom, sele
           key={card.suit + card.value} 
           setSelectedCard={setSelectedCard} 
           selectedCard={selectedCard}
-          player={player}
+          cardLocation={cardLocation}
           setFrom={setFrom}
           card={card}
         />))
